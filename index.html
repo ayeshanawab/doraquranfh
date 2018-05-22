@@ -84,21 +84,28 @@
  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 
  <script>
-  $("audio").bind("timeupdate", function(){
-   localStorage.setItem($(this).parent().attr("id")+"-currentTime",this.currentTime);
-   console.log("saving time "+this.currentTime);
-  });
-  $(document).ready(function(){
-   if(localStorage.length > 0){
-    for(let key in localStorage){
-     let temp = key.split("-");
-     let id = temp[0];
-     let attr = temp[1];
-     $("#"+id).find("audio").get(0).currentTime = localStorage.getItem("key");
-    }
-   }
-  });
- </script>
+    $(document).ready(function () {
+      $("audio").bind("timeupdate", function () {
+        localStorage.setItem($(this).parent().attr("id") + "-currentTime", this.currentTime);
+      });
+      if (localStorage.length > 0) {
+        for (let key in localStorage) {
+          if (key.indexOf("currentTime") !== -1) {
+            let temp = key.split("-");
+            let id = temp[0];
+            let attr = temp[1];
+            //$("#" + id).find("audio").get(0).currentTime = localStorage.getItem("key");
+            $("#" + id).find("audio").bind('canplay', function() {
+              //console.log(this.currentTime);
+              this.currentTime = localStorage.getItem(key);
+              // console.log(localStorage.getItem("key"));
+              // console.log(this.currentTime);
+            });
+          }
+        }
+      }
+    });
+  </script>
 </body>
 
 </html>
