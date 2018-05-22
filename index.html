@@ -94,13 +94,11 @@
             let temp = key.split("-");
             let id = temp[0];
             let attr = temp[1];
-            //$("#" + id).find("audio").get(0).currentTime = localStorage.getItem("key");
-            $("#" + id).find("audio").bind('canplay', function() {
-              //console.log(this.currentTime);
-              this.currentTime = localStorage.getItem(key);
-              // console.log(localStorage.getItem("key"));
-              // console.log(this.currentTime);
-            });
+            if($("#" + id).get(0)!==undefined){
+              $("#" + id).find("audio").bind('canplay', function() {
+                this.currentTime = localStorage.getItem(key);
+              });
+            }
           }
         }
       }
