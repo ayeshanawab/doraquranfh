@@ -86,7 +86,7 @@
       <h1>Daura Quran - Farhat Hashmi</h1>
     </div>
   </div>
-  <div id="1" class="pb-4 container parah d-none">
+  <div id="1" class="pb-4 container parah">
     <h2>Parah 1</h2>
     <div id="1a" class="no-text-deco rounded-left bg-light hover-dark mb-1" href="#">
       <p class="lead px-2 text-secondary mb-1">Al-Fatihah - Al-Baqarah 1-10</p>
@@ -828,6 +828,14 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 
   <script>
+    function showRiteParah(idnumber){
+      $(".parah").addClass("d-none");
+      $("#"+idnumber).removeClass("d-none");
+      $("#"+idnumber).find("source").each(function(){
+        $(this).attr("src",$(this).attr("data-src"));
+        $(this).parent().attr("preload", "auto");
+      });
+    }
     $(document).ready(function () {
       $("audio").bind("timeupdate", function () {
         localStorage.setItem($(this).parent().attr("id") + "-currentTime", this.currentTime);
@@ -847,18 +855,25 @@
           }
         }
       }
+      if(window.location.toString().indexOf("#")>-1){
+        let currentParah = window.location.toString().split("#")[1];
+        showRiteParah(currentParah);
+        $("select").val(currentParah);
+      }
+      $("select").on("change", function(){
+        window.location="#"+$(this).val();
+        showRiteParah($(this).val);
+      });
     });
     function onPlay(element){
       $("audio").each(function(){
-        this.pause();
+        if(this.id !== element.id){
+          this.pause();
+        }
       });
-      element.play();
     }
-    $("select").on("change", function(){
-      window.location.pathname="#"+$(this).val();
-      $(".parah").hide();
-      $("#"+$(this).val()).show();
-    });
+    
+    
   </script>
 </body>
 
