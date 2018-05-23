@@ -832,7 +832,7 @@
       $(".parah").addClass("d-none");
       $("#"+idnumber).removeClass("d-none");
       $("#"+idnumber).find("source").each(function(){
-        $(this).attr("src",$(this).attr("data-src"));
+        //$(this).attr("src",$(this).attr("data-src"));
         $(this).parent().attr("preload", "meta");
       });
     }
@@ -855,22 +855,23 @@
           }
         }
       }
-      if(window.location.toString().indexOf("#")>-1){
-        let currentParah = window.location.toString().split("#")[1];
+      if(window.location.toString().indexOf("?")>-1){
+        let currentParah = window.location.toString().split("?")[1];
         showRiteParah(currentParah);
         $("select").val(currentParah);
       }
       $("select").on("change", function(){
-        window.location="#"+$(this).val();
+        window.location="?"+$(this).val();
         showRiteParah($(this).val());
       });
     });
     function onPlay(element){
-      // $("audio").each(function(){
-      //   if(this.id !== element.id){
-      //     this.pause();
-      //   }
-      // });
+      $("audio").each(function(){
+        console.log(this+" || "+element);
+        if(this !== element){
+          this.pause();
+        }
+      });
     }
     
     
