@@ -848,8 +848,8 @@
             let attr = temp[1];
             if ($("#" + id).get(0) !== undefined) {
               $("#" + id).find("audio").bind('canplay', function () {
-                this.preload = "auto";
                 this.currentTime = localStorage.getItem(key);
+                this.preload = "auto";
               });
             }
           }
