@@ -831,10 +831,10 @@
     function showRiteParah(idnumber){
       $(".parah").addClass("d-none");
       $("#"+idnumber).removeClass("d-none");
-      $("#"+idnumber).find("source").each(function(){
+      //$("#"+idnumber).find("source").each(function(){
         //$(this).attr("src",$(this).attr("data-src"));
-        $(this).parent().attr("preload", "meta");
-      });
+        //$(this).parent().attr("preload", "meta");
+     // });
     }
     $(document).ready(function () {
       // $("audio").bind("timeupdate", function () {
@@ -879,7 +879,7 @@
     }
     
     $("#2b").find("audio").bind('canplay', function () {
-      //this.preload = "auto";
+      this.preload = "auto";
       this.play();
       this.currentTime=1000});
   </script>
