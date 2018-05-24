@@ -829,6 +829,9 @@
 
   <script>
     function showRiteParah(idnumber){
+      if(idnumber===0){
+        idnumber=1;
+      }
       $(".parah").addClass("d-none");
       $("#"+idnumber).removeClass("d-none");
       $("#"+idnumber).find("audio").each(function(){
