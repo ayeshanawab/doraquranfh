@@ -829,9 +829,7 @@
 
   <script>
     function showRiteParah(idnumber){
-      if(idnumber===0){
-        idnumber=1;
-      }
+      console.log(idnumber);
       $(".parah").addClass("d-none");
       $("#"+idnumber).removeClass("d-none");
       $("#"+idnumber).find("audio").each(function(){
@@ -859,9 +857,13 @@
         showRiteParah(currentParah);
         $("select").val(currentParah);
       }
+      else{
+        $("select").val(1);
+        showRiteParah(1);
+      }
       $("select").on("change", function(){
         window.location="?"+$(this).val();
-        showRiteParah($(this).val());
+        //showRiteParah($(this).val());
       });
     });
     function onPlay(element){
