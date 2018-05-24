@@ -849,9 +849,9 @@
             if ($("#" + id).get(0) !== undefined) {
               $("#" + id).find("audio").bind('canplay', function () {
                 this.preload = "auto";
-                this.play();
+                //this.play();
                 this.currentTime = localStorage.getItem(key);
-                //this.pause();
+                this.load();
               });
             }
           }
