@@ -879,9 +879,7 @@
       // });
     }
     
-    $("#30f").find("audio").bind('canplay', function () {
-      $(this).parent().find("p").text("in bind function");
-      this.currentTime=1000});
+    $("#30f").find("audio").get(0).currentTime=1000);
     
   </script>
 </body>
