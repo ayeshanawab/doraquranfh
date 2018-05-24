@@ -1,4 +1,0 @@
-upload mp3 files in archive.org
-
-- plan is to store current state of all audio in local storage. also what was being played last time. for example if we have 
-there will be ontimeupdate event on audio elements,
