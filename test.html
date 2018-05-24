@@ -850,7 +850,7 @@
               //$("#" + id).find("audio").bind('canplay', function () {
                 //this.preload = "auto";
                 //this.play();
-                this.currentTime = localStorage.getItem(key);
+                //this.currentTime = localStorage.getItem(key);
                 //console.log("setting ct for "+id);
                 //this.load();
                 
@@ -879,8 +879,8 @@
     }
     
     $("#2b").find("audio").bind('canplay', function () {
-      this.preload = "auto";
-      //this.play();
+      //this.preload = "auto";
+      this.play();
       this.currentTime=1000});
   </script>
 </body>
