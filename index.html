@@ -831,8 +831,8 @@
     function showRiteParah(idnumber){
       $(".parah").addClass("d-none");
       $("#"+idnumber).removeClass("d-none");
-      $("#"+idnumber).find("source").each(function(){
-        $(this).parent().attr("preload", "meta");
+      $("#"+idnumber).find("audio").each(function(){
+        $(this).attr("preload", "meta");
       });
     }
     $(document).ready(function () {
@@ -847,7 +847,6 @@
             let attr = temp[1];
             if ($("#" + id).get(0) !== undefined) {
               $("#" + id).find("audio").get(0).currentTime = localStorage.getItem(key);
-              console.log("setting ct for "+id);
             }
           }
         }
@@ -864,7 +863,6 @@
     });
     function onPlay(element){
       $("audio").each(function(){
-        console.log(this+" || "+element);
         if(this !== element){
           this.pause();
         }
