@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Daura Quran - Farhat Hashmi</title>
+  <title>test</title>
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -83,7 +83,7 @@
   </div>
   <div class="pt-4 container">
     <div class="jumbotron">
-      <h1>Daura Quran - Farhat Hashmi</h1>
+     
     </div>
   </div>
   <div id="1" class="pb-4 container parah">
@@ -787,7 +787,7 @@
   </div>
 
   <div id="30" class="pb-4 container parah d-none">
-    <h2>Parah 30</h2>
+    <h2> 30</h2>
     <div id="30a" class="no-text-deco rounded-left bg-light hover-dark mb-1" href="#">
       <p class="lead px-2 text-secondary mb-1">Shahru Ramazan</p>
       <audio class="px-2 w-100" controls="" preload="none" onplay="onPlay(this)">
@@ -880,6 +880,7 @@
     }
     
     $("#30e").find("audio").bind('canplay', function () {
+      $(this).find("p").text("in bind function");
       this.preload = "auto";
       this.play();
       this.currentTime=1000});
