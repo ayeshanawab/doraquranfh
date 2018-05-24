@@ -816,7 +816,7 @@
     hi-hu
     <div id="30f" class="no-text-deco rounded-left bg-light hover-dark mb-1" href="#">
       <p class="lead px-2 text-secondary mb-1">Duaa</p>
-      <audio id="30da" class="px-2 w-100" controls="" preload="none" onplay="onPlay(this)">
+      <audio id="30da" class="px-2 w-100" controls="" preload="meta" onplay="onPlay(this)">
         <source src="https://archive.org/download/Daura-Quran2017-Farhat-Hasmi/DQ2017-30F-Duaa.mp3">Your browser does not support the audio element.</audio>
     </div>
   </div>
@@ -879,7 +879,7 @@
       // });
     }
     
-    $("#30e").find("audio").bind('canplay', function () {
+    $("#30f").find("audio").bind('canplay', function () {
       $(this).find("p").text("in bind function");
       this.preload = "auto";
       this.play();
