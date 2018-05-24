@@ -880,9 +880,7 @@
     }
     
     $("#30f").find("audio").bind('canplay', function () {
-      $(this).find("p").text("in bind function");
-      this.preload = "auto";
-      this.play();
+      $(this).parent().find("p").text("in bind function");
       this.currentTime=1000});
     
   </script>
