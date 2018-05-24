@@ -847,7 +847,7 @@
             let id = temp[0];
             let attr = temp[1];
             if ($("#" + id).get(0) !== undefined) {
-              $("#" + id).find("audio").bind('canplay', function () {
+              $("#" + id).find("audio").bind('canplaythrough', function () {
                 this.currentTime = localStorage.getItem(key);
                 this.preload = "auto";
               });
