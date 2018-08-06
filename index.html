@@ -853,13 +853,15 @@
         }
       }
       if(window.location.toString().indexOf("?")>-1){
-        let currentParah = window.location.toString().split("?")[1];
-        showRiteParah(currentParah);
-        $("select").val(currentParah);
+        window.location = window.location.toString().replace("?","/");
+        // let currentParah = window.location.toString().split("?")[1];
+        // showRiteParah(currentParah);
+        // $("select").val(currentParah);
       }
       else{
         $("select").val(1);
-        showRiteParah(1);
+        $("select").change();
+        //showRiteParah(1);
       }
       $("select").on("change", function(){
         window.location="/"+$(this).val();
