@@ -21,7 +21,8 @@
           }
         }
       }
-      $("select").val("{{ page.url }}");
+      var pageid = "{{ page.url }}".split(".")[0];
+      $("select").val(pageid);
       $("select").on("change", function(){
         window.location=$(this).val();
       });
