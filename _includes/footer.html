@@ -1,0 +1,57 @@
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+  <script>
+    // function showRiteParah(idnumber){
+    //   console.log(idnumber);
+    //   $(".parah").addClass("d-none");
+    //   $("#"+idnumber).removeClass("d-none");
+    //   $("#"+idnumber).find("audio").each(function(){
+    //     $(this).attr("preload", "meta");
+    //   });
+    // }
+    $(document).ready(function () {
+      $("audio").bind("timeupdate", function () {
+        localStorage.setItem($(this).parent().attr("id") + "-currentTime", this.currentTime);
+      });
+      if (localStorage.length > 0) {
+        for (let key in localStorage) {
+          if (key.indexOf("currentTime") !== -1) {
+            let temp = key.split("-");
+            let id = temp[0];
+            let attr = temp[1];
+            if ($("#" + id).get(0) !== undefined) {
+              $("#" + id).find("audio").get(0).currentTime = localStorage.getItem(key);
+            }
+          }
+        }
+      }
+      // if(window.location.toString().indexOf("?")>-1){
+      //   let currentParah = window.location.toString().split("?")[1];
+      //   showRiteParah(currentParah);
+        $("select").val("{{ page.url }}");
+      // }
+      // else{
+      //   $("select").val(1);
+      //   showRiteParah(1);
+      // }
+      $("select").on("change", function(){
+        window.location=$(this).val();
+      });
+    });
+    function onPlay(element){
+      $("audio").each(function(){
+        if(this !== element){
+          this.pause();
+        }
+      });
+    }
+    
+    
+  </script>
+</body>
+
+</html>
